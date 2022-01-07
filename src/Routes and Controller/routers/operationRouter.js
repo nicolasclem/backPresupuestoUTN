@@ -6,16 +6,16 @@ const {validationCreate}= require('../../middleware/validation')
 
 
 
-router.get('/table',controller.detail)
+router.get('/table',authMiddleware,controller.detail)
 
 
-router.get('/create',controller.createForm)
+router.get('/create',authMiddleware,controller.createForm)
 
 router.post ('/create',validationCreate,controller.storage)
 
 
 
-router.get ('/edit/:id', controller.edit)
+router.get ('/edit/:id',authMiddleware, controller.edit)
 router.post ('/edit/:id', controller.editPost)
     
 
