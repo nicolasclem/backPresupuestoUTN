@@ -1,23 +1,26 @@
 module.exports = {
   "development": {
-    "username": "root",
-    "password": null,
-    "database": "alkemy",
-    "host": "127.0.0.1",
+    "username": "b93e2a6878adc5",
+    "password": "04cd96d0",
+    "database": "heroku_81ed85f7daec5c0",
+    "host": "us-cdbr-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "alkemy1",
-    "host": "127.0.0.1",
+    "username": "b93e2a6878adc5",
+    "password": "04cd96d0",
+    "database": "heroku_81ed85f7daec5c0",
+    "host": "us-cdbr-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "alkemy2",
-    "host": "127.0.0.1",
+    "username": "b93e2a6878adc5",
+    "password": "04cd96d0",
+    "database": "heroku_81ed85f7daec5c0",
+    "host": "us-cdbr-east-05.cleardb.net",
     "dialect": "mysql"
   }
 }
+
+
+//mysql://b93e2a6878adc5:04cd96d0@us-cdbr-east-05.cleardb.net/heroku_81ed85f7daec5c0?reconnect=true
