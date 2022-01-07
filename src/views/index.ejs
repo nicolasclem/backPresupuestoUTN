@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/header')  %> 
+    <div class="form-container w-25 p-4 m-auto mt-5"> 
+        <div class="form-container__icon"> <i class="fas fa-sign-in-alt"></i></div>
+        <h3>LOGIN</h3>
+        <form  action="/" method="POST" > 
+
+            <div class="form-floating mb-3">
+                <input 
+                type="email"
+                class="form-control" 
+                id="emailLogin" 
+                name="email" placeholder="Email address"
+                value="<%= locals.oldData ? oldData.email:null %>"
+                >
+
+                <label for="emailLogin" >Email address</label>
+                <% if (locals.errors && errors.email) { %>
+
+                <div class="text-danger">
+                    <%= errors.email.msg  %>
+                </div>
+                <% } %>
+            </div>
+            <div class= "form-floating mb-1 ">
+                <input 
+                type="password" 
+                class="form-control d-inline w-75 inputP"
+                id="passwordLogin" name="password" 
+                placeholder="Password "
+                >
+                <label for="passwordLogin">Password</label>
+                <span  class="btn btn-ligth d-inline "><i class="fas fa-eye-slash inputE" ></i></span> 
+                <% if (locals.errors && errors.password) { %>
+
+                <div class="text-danger">
+                    <%= errors.password.msg  %>
+                </div>
+                <% } %>
+            </div>
+            <div class="form-check mb-5">
+                <input class="form-check-input" type="checkbox"  id="flexCheckDefault" name="remember">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Recordame
+                </label>
+            </div>
+
+            <button type="submit" class="d-block btn btn-outline-primary w-75 mb-3 m-auto">Login</button>
+
+            <div class=" w-75 mb-3 m-auto">
+                <p>No tenés una cuenta? Creala <a href="./register">aquí</a></p>
+            </div>
+        </form>
+    </div>
+  
+    
+    
+    
+    <%- include('./partials/footer')  %> 
+    <script src="/js/passwordEye.js"></script>
+</body>
+</html>

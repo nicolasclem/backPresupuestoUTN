@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/header')  %> 
+    <div class=" form-container p-3 w-25 mt-5 m-auto">
+        <a href="http://localhost:3003/operations/table" class="btn-close rounded float-end " aria-label="Close"></a>
+        <div class="form-container__icon"><i class="fab fa-atlassian"></i></div>
+        <h3 class="text-center mb-4">Registrar operacion</h3>
+        
+        <section class="section-alta">
+        
+            <form action="/operations/create"  method="POST">
+        <input class="form-control mb-2 w-75 m-auto" type="text" name="description"
+        value="<%= locals.oldData ? oldData.description:null %>" >
+        <% if (locals.errors && errors.description) { %>
+
+            <div class="text-danger  mb-2 w-75 m-auto">
+                <%= errors.description.msg  %>
+            </div>
+            <% } %>
+        <input class="form-control mb-2 w-75 m-auto" type="numbre" name="amount" 
+        value="<%= locals.oldData ? oldData.amount:null %>">
+        <% if (locals.errors && errors.amount) { %>
+
+            <div class="text-danger mb-2 w-75 m-auto">
+                <%= errors.amount.msg  %>
+            </div>
+            <% } %>
+       
+        <input class="form-control mb-2 w-75 m-auto" type="date" name="date" >
+        <% if (locals.errors && errors.date) { %>
+
+            <div class="text-danger  mb-2 w-75 m-auto ">
+                <%= errors.date.msg  %>
+            </div>
+            <% } %>
+        
+        <div class="input-group mb-3 w-75 w-75  m-auto">
+            <label class="input-group-text" for="inputGroupSelect01">operacion</label>
+            <select class="form-select" id="inputGroupSelect01" name="type">
+                
+                <% for (let i = 0; i<types.length; i++) { %> 
+                    <option value="<%= types[i].id %>"> <%= types[i].name%></option>
+                <% } %> 
+            </select>
+        </div>
+        <button type="submit" class="d-block btn btn-info mt-3 mb-4 w-75  m-auto" >Crear Registro</button>
+        </form>
+    </section>
+    </div>
+    <section>
+
+    </section>
+    <%- include('./partials/footer')  %> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>

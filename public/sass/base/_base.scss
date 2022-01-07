@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+$IconColor :#1e81b0;
+
+
+
+
+.form-container{
+
+    border: 1px solid rgb(143, 142, 142);
+    border-radius: 4px;
+
+
+    &__icon{
+        margin: 20px  auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width:50px;
+        height: 50px;
+        background-color: $IconColor;
+        border-radius: 50px;
+
+        & i{
+            font-size: x-large;
+              color: azure;
+           }
+    }
+
+}

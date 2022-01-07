@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head'); %>
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./partials/header')  %> 
+    <div class="form-container w-25 p-4 m-auto mt-5"> 
+        <div class="form-container__icon"> <i class="far fa-id-card"></i></i></div>
+        <h3>REGISTER</h3>
+        <form action="/register" method="POST">
+        <div class="form-floating mb-3">
+            <input 
+            type="name" class="form-control"
+             id="nameRegister" name="name" placeholder="Name"
+             value="<%= locals.oldData ? oldData.name:null %>">
+            <label for="nameRegister">Name</label>
+            <% if(locals.errors && errors.name) {%>
+            <div class="text-danger">
+                <%= errors.name.msg  %> 
+            </div>
+            <%} %> 
+        </div>
+        <div class="form-floating mb-3" >
+            <input type="email" 
+            class="form-control" 
+            id="emailRegister" 
+            name="email" placeholder="Email address"
+            value="<%= locals.oldData ? oldData.email:null %>">
+
+
+            <label for="emailRegister">Email address</label>
+            <% if(locals.errors && errors.email) {%>
+            <div class="text-danger">
+                <%= errors.email.msg  %> 
+            </div>
+            <%} %> 
+        </div>
+        <div class="form-floating mb-5 d-flex align-items-center">
+            <input type="password" class="form-control d-inline w-75 inputP" id="passwordInput" name="password" placeholder="Password">
+            <label for="passwordInput">Password</label>
+            <span  class="btn btn-ligth d-inline ms-3"><i class="fas fa-eye-slash inputE" ></i></span>
+            <% if(locals.errors && errors.password) {%>
+            <div class="text-danger">
+                <%= errors.password.msg  %> 
+            </div>
+            <%} %> 
+
+        </div>
+        <button type="submit" class="d-block btn btn-outline-info w-75  mb-1 m-auto" >SING UP</button>
+    </form>
+    </div>
+    <%- include('./partials/footer')  %> 
+    <script src="/js/passwordEye.js"></script>
+</body>
+</html>
