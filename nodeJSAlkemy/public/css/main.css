@@ -1,0 +1,41 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.form-container {
+  border: 1px solid #8f8e8e;
+  border-radius: 4px;
+}
+.form-container__icon {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #1e81b0;
+  border-radius: 50px;
+}
+.form-container__icon i {
+  font-size: x-large;
+  color: azure;
+}
+
+#floatingPassword::-moz-placeholder {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+#floatingPassword:-ms-input-placeholder {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
+
+#floatingPassword::placeholder {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+}
