@@ -24,17 +24,17 @@ const operations ={
         let types = await db.Type.findAll();
         let users = await db.User.findAll();
         try{
-            const validation = validationResult(req);
-            if(validation.errors.length > 0){
-                    return res.render("createForm",
-                        {
-                        errors:validation.mapped(),
-                        oldData: req.body,
-                        types,
-                        users
-                        }
-                    );
-            };
+            // const validation = validationResult(req);
+            // if(validation.errors.length > 0){
+            //         return res.render("createForm",
+            //             {
+            //             errors:validation.mapped(),
+            //             oldData: req.body,
+            //             types,
+            //             users
+            //             }
+            //         );
+            // };
         
             db.Operation.create(
                 {
@@ -135,18 +135,39 @@ const operations ={
 
 
 /******************************************************************** */
-// show:(req,res)=>{    
-//     db.Operation
-//     .findAll({include:[{association:'types'},{association:'users'}]
-// })
-//     .then(operations =>{
+ show:(req,res)=>{    
+     db.Operation
+     .findAll({include:[{association:'types'},{association:'users'}]
+ })
+     .then(operations =>{
     
-//         return  res.status(200).json({
-//         operations    
-//         })
-//     })
-//         .catch(error => console.log(error))
-// },
+         return  res.status(200).json({
+         operations    
+         })
+     })
+         .catch(error => console.log(error))
+ },
+ storageApi2: async (req,res)=>{
+        let types = await db.Type.findAll();
+        let users = await db.User.findAll();
+        db.Operation.create(
+            {
+                
+                description:req.body.description,
+                amount: req.body.amount,
+                date:req.body.date,
+                id_type:req.body.type,
+                id_user:req.session.userLogged.id
+                
+        
+                
+            },{include:[{association:'types'},{association:'users'}]
+        })
+        .then(()=>
+        {res.send ("creando")}
+        )
+    
+},
 /****************************************************************************** 
  * 
  * 
@@ -167,7 +188,7 @@ storageApi: (req,res)=>{
                 amount: req.body.amount,
                 date:req.body.date,
                 id_type:req.body.type,
-                id_user:1// hardcodeado hasta implementar  registro desde cliente ... realizar  registro desde http://localhost:3003/
+                id_user:114// hardcodeado hasta implementar  registro desde cliente ... realizar  registro desde http://localhost:3003/
                 
         
                 
@@ -201,9 +222,13 @@ storageApi: (req,res)=>{
                     {
                         where: {id : req.params.id}
                     })
-                   
+                    .then(()=>
+                    {res.send("editado")}
+                    )
+                    .catch(error=>console.log(error))
             }).catch(error=>console.log(error))
        
+        
         
         },
         destroyApi: function(req,res){
@@ -230,7 +255,7 @@ storageApi: (req,res)=>{
          */
 
 
-         show: async (req, res) => {
+         showDos: async (req, res) => {
             const operations = await db.Operation.findAll({include:[{association:'types'},{association:'users'}]})
             if (operations.length > 0) {
                 try {

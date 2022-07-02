@@ -31,9 +31,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 
-// nuestro motor de plantillas
-app.set('view engine', 'ejs');
-app.set('views', path.resolve(__dirname, 'views'));
+
 
 app.use (session({ 
     secret: ' secreto',

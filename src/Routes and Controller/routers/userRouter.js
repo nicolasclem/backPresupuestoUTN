@@ -1,14 +1,8 @@
 const express =require('express');
 const router =express.Router();
 const controller = require ('../controller/userControllers')
-const{validationRegister,validationLogin} = require('../../middleware/validation')
-const guestMiddleware = require('../../middleware/guestMiddleware')
-
-    //render de fomularios usuarios
-
-    router.get('/',guestMiddleware,controller.show)
-    
-    router.get('/register',guestMiddleware,controller.register)
+ const{validationRegister,validationLogin} = require('../../middleware/validation')
+ const guestMiddleware = require('../../middleware/guestMiddleware')
 
 
 

@@ -28,7 +28,7 @@ const controller = require ('../controller/operationControllers')
 router.get('/list',controller.show)
 
 
-router.post('/list', controller.create)
+router.post('/list', controller.storageApi)
 
 router.put('/list/:id', controller.editPostApi)
 

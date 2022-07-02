@@ -31,6 +31,7 @@ const controllerUsers ={
                     }
                 })
                 .then(user => {
+                    res.send(user)
                     if (user) {
                         const passUSer = bcrypt.compareSync(password, user.password)
 
