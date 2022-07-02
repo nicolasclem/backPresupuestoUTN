@@ -25,14 +25,14 @@ const controller = require ('../controller/operationControllers')
 
 /*********************API***************************** */
 
-router.get('/list',controller.show)
+router.get('/api',controller.show)
 
 
-router.post('/list', controller.storageApi)
+router.post('/api', controller.storageApi)
 
-router.put('/list/:id', controller.editPostApi)
+router.put('/api/:id', controller.editPostApi)
 
-router.delete('/list/del/:id', controller.destroyApi)
+router.delete('/api/del/:id', controller.destroyApi)
 
 
 
