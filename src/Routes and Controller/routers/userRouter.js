@@ -6,7 +6,7 @@ const guestMiddleware = require('../../middleware/guestMiddleware')
 
     //render de fomularios usuarios
 
-    router.get('/',guestMiddleware,controller.home)
+    router.get('/',guestMiddleware,controller.show)
     
     router.get('/register',guestMiddleware,controller.register)
 
@@ -14,7 +14,7 @@ const guestMiddleware = require('../../middleware/guestMiddleware')
 
     //proceso  login  y register
 
-    router.post('/',validationLogin,controller.processLogin);
+    router.post('/',validationLogin,controller.login);
     
     router.post('/register',validationRegister,controller.processRegister);
 
@@ -25,7 +25,7 @@ const guestMiddleware = require('../../middleware/guestMiddleware')
 /****************************************************API */
 
 
-router.post('/login',controller.processLogin);
+router.post('/login',controller.login);
 
 
     module.exports =router;

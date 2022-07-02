@@ -1,26 +1,26 @@
 const express =require('express');
 const router =express.Router();
 const controller = require ('../controller/operationControllers')
-const authMiddleware = require('../../middleware/authMiddleware')
-const {validationCreate}= require('../../middleware/validation')
+//const authMiddleware = require('../../middleware/authMiddleware')
+//const {validationCreate}= require('../../middleware/validation')
 
 
 
-router.get('/table',authMiddleware,controller.detail)
+// router.get('/table',authMiddleware,controller.detail)
 
 
-router.get('/create',authMiddleware,controller.createForm)
+// router.get('/create',authMiddleware,controller.createForm)
 
-router.post ('/create',validationCreate,controller.storage)
+// router.post ('/create',validationCreate,controller.storage)
 
 
 
-router.get ('/edit/:id',authMiddleware, controller.edit)
-router.post ('/edit/:id', controller.editPost)
+// router.get ('/edit/:id',authMiddleware, controller.edit)
+// router.post ('/edit/:id', controller.editPost)
     
 
 
-router.post('/del/:id', controller.destroy)
+// router.post('/del/:id', controller.destroy)
 
 
 /*********************API***************************** */
@@ -28,7 +28,7 @@ router.post('/del/:id', controller.destroy)
 router.get('/list',controller.show)
 
 
-router.post('/list', controller.storageApi)
+router.post('/list', controller.create)
 
 router.put('/list/:id', controller.editPostApi)
 

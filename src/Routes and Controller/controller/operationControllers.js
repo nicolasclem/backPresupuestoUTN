@@ -125,7 +125,9 @@ const operations ={
         include:[{association: 'types'}, {association: 'users'}]
     })
     .then(operations=>{
-                    
+
+        
+        
         res.render('table',{operations, user:req.session.userLogged})
     }).catch(error=>console.log(error)); 
     },
@@ -133,19 +135,18 @@ const operations ={
 
 
 /******************************************************************** */
-show:(req,res)=>{    
-    db.Operation
-    .findAll({include:[{association:'types'},{association:'users'}]
-})
-    .then(operations =>{
+// show:(req,res)=>{    
+//     db.Operation
+//     .findAll({include:[{association:'types'},{association:'users'}]
+// })
+//     .then(operations =>{
     
-        return  res.status(200).json({
-            data: operations,
-            status:200
-        })
-    })
-        .catch(error => console.log(error))
-},
+//         return  res.status(200).json({
+//         operations    
+//         })
+//     })
+//         .catch(error => console.log(error))
+// },
 /****************************************************************************** 
  * 
  * 
@@ -214,6 +215,127 @@ storageApi: (req,res)=>{
                 console.log("eliminado")
                 )
                 .catch(error=>console.log(error))
-        }
+        },
+
+        /***************************
+         * *********************
+         * *****************
+         * **************
+         * ***********
+         * ********
+         * ******
+         * ****
+         * **
+         * *
+         */
+
+
+         show: async (req, res) => {
+            const operations = await db.Operation.findAll({include:[{association:'types'},{association:'users'}]})
+            if (operations.length > 0) {
+                try {
+    
+                    const alloperations = operations.map(operation => {
+                        operation = {
+                            description: operation.dataValues.description,
+                            amount: operation.dataValues.amount,
+                            date: operation.dataValues.date,
+                            id_type :operation.dataValues.id_type,
+                            id_user:operation.dataValues.id_user
+                        }
+                        return operation;
+                    })
+                    res.status(200).json({
+                        data: alloperations,
+                        msg: "operaciones  encontradas!!"
+                    })
+    
+                } catch (error) {
+                    console.log(error)
+                }
+            } else {
+                res.status(400).json({
+    
+                    msg: "Base de Datos sin Operaciones!"
+                })
+            }
+    
+        },
+        create: (req, res) => {
+            db.Operation.create({
+                                    include: [{
+                                        association: 'characters'
+                                    }, {
+                                        association: 'genres'
+                                    }],
+                                    ...req.body,
+                                })
+                                .then(operation => {
+                                    return res.status(200).json({
+                                        data: operation,
+                                        status: 200,
+                                        msg: 'operacion creada'
+                                    })
+                                }).catch(error => console.log(error))
+        },
+        del: async (req, res) => {
+            const operationDelete = await db.Operation.destroy({
+                where: {
+                    id: req.params.id
+                }
+            })
+            try {
+                operationDelete ?
+                    res.status(200).json({
+                        delete: 'Operacion! borrada',
+                        status: 200,
+                    }) :
+                    res.status(400).json({
+                        msg: "no se encuentra la Operacion!",
+                        status: 400
+                    })
+    
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        edit: async (req, res) => {
+    
+            const operationToEdit = await db.Operation.findByPk(req.params.id)
+    
+            try {
+                if ( operationToEdit) {
+                    operationToEdit.update({
+    
+                        description:req.body.description!= undefined ? req.body.description : operationToEdit.description,
+                        amount: req.body.amount!= undefined ? req.body.amount : operationToEdit.amount,
+                        date:req.body.date != undefined ? req.body.date : operationToEdit.date,
+                            
+                        })
+                        .then(operation => {
+                            return res.status(200).json({
+                                data: operation,
+                                status: 200,
+                                msg: 'operacion editada'
+                            })
+                        }).catch(error =>
+                            res.status(400).json({
+                                status: 400,
+                                msg: `no se logro editar ${error}`
+                            }))
+                } else {
+                    res.status(400).json({
+                        status: 400,
+                        msg: `no se encontro la operacion`
+                    })
+                }
+    
+            } catch (error) {
+                console.log(error);
+            }
+    
+        },
+
+
 }
 module.exports = operations;
