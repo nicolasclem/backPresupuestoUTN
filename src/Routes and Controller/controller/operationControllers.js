@@ -27,13 +27,13 @@ const operations ={
                     {                                    
                         description:req.body.description,
                         amount: req.body.amount,
-                        date:req.body.date,              
+                        id_type:req.body.type             
                     },
                     {
                         where: {id : req.params.id}
                     })
         .then(()=>
-                res.send("editado")
+                res.send( req.params.id)
         )
         }).catch(error=>console.log(error))
         },
