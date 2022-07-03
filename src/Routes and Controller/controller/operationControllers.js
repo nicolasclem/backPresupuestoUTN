@@ -196,7 +196,7 @@ storageApi: (req,res)=>{
         })
         .then(() =>{
             
-            console.log("creado")
+           res.send("creado")
         })
             .catch(e=>console.log(e))
         
