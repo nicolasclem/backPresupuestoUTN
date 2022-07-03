@@ -20,12 +20,12 @@ const operations ={
     },
     edit: async (req,res)=>{
 
-        const element =await db.Operation.findByPk(req.params.id)
-        .then(() =>
+        await db.Operation.findByPk(req.params.id)
+        .then(( res) =>
                 {
                     db.Operation.update(
                     {    
-                        ...element  ,                              
+                        ... res,                          
                         description:req.body.description,
                         amount: req.body.amount,
                         id_type:req.body.type             
