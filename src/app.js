@@ -17,9 +17,21 @@ const operationRoute = require('./Routes and Controller/routers/operationRouter'
 // testeo de data tabla types
 const typeRoute = require('./Routes and Controller/routers/typeRouter');
 
-
-
-app.use(cors())// politica de seguirdad
+const config = {
+    application: {
+        cors: {
+            server: [
+                {
+                    origin: "*", //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                    credentials: true
+                }
+            ]
+        }
+}
+};
+app.use(cors(
+    config.application.cors.server
+  ));// politica de seguirdad
 
 app.use(
     express.static(path.resolve(__dirname, '../public'))

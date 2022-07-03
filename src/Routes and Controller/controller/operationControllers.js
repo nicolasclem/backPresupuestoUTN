@@ -21,12 +21,13 @@ const operations ={
     edit: async (req,res)=>{
 
         await db.Operation.findByPk(req.params.id)
-        .then(( res) =>
+        .then(() =>
                 {
                     db.Operation.update(
-                    {    
-                        ... res,                          
+                    {   
+                      
                         description:req.body.description,
+                        date:req.body.date,
                         amount: req.body.amount,
                         id_type:req.body.type             
                     },
@@ -34,7 +35,7 @@ const operations ={
                         where: {id : req.params.id}
                     })
         .then(()=>
-                res.send( req.params.id)
+                res.send( "editado")
         )
         }).catch(error=>console.log(error))
         },
