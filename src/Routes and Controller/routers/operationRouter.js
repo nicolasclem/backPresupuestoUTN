@@ -28,11 +28,11 @@ const controller = require ('../controller/operationControllers')
 router.get('/api',controller.show)
 
 
-router.post('/api', controller.storageApi)
+router.post('/api', controller.create)
 
-router.put('/api/:id', controller.editPostApi)
+ router.put('/api/:id', controller.edit)
 
-router.delete('/api/del/:id', controller.destroyApi)
+router.delete('/api/:id', controller.del)
 
 
 
