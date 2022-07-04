@@ -3,7 +3,7 @@ const app=express()
 
 const port=  process.env.PORT || 3003
 const path = require('path');
-const cors= require('cors')
+const cors= require('cors');
 const cookies = require ('cookie-parser');
 
 const session = require ('express-session');

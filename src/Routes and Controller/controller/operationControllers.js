@@ -1,6 +1,6 @@
 const db = require("../../database/models");
 
-//const { validationResult} = require('express-validator');
+
 
 
 const operations ={
@@ -25,7 +25,6 @@ const operations ={
                 {
                     db.Operation.update(
                     {   
-                      
                         description:req.body.description,
                         date:req.body.date,
                         amount: req.body.amount,

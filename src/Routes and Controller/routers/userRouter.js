@@ -10,7 +10,7 @@ const controller = require ('../controller/userControllers')
 
     router.post('/',validationLogin,controller.login);
     
-    router.post('/register',validationRegister,controller.processRegister);
+    router.post('/register',controller.register);
 
 
 //proceso  logout
