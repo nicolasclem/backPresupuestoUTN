@@ -29,6 +29,15 @@ const config = {
         }
 }
 };
+
+app.use(
+    cors({
+      origin: ["https://front-utn.herokuapp.com/"],
+      methods: ["GET", "POST", "DELETE","PUT"],
+      credentials: true,
+      origin: true,
+    })
+  )
 app.use(cors(
      config.application.cors.server
   ));// politica de seguirdad
