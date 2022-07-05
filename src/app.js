@@ -25,12 +25,8 @@ const config = {
 }
 };
 
-res.setHeader('Access-Control-Allow-Origin', '*');
-res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-res.setHeader('Access-Control-Allow-Credentials', true);
 
-app.use(cors())
+// app.use(cors())
 // app.use(cors({
 //     origin: '*'
 //     }));
@@ -43,9 +39,9 @@ app.use(cors())
 //       origin: true,
 //     })
 //   )
-// app.use(cors(
-//      config.application.cors.server
-//   ));// politica de seguirdad
+app.use(cors(
+     config.application.cors.server
+  ));// politica de seguirdad
 
 
 
