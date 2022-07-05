@@ -38,9 +38,9 @@ app.use(
       origin: true,
     })
   )
-app.use(cors(
-     config.application.cors.server
-  ));// politica de seguirdad
+// app.use(cors(
+//      config.application.cors.server
+//   ));// politica de seguirdad
 
 app.use(
     express.static(path.resolve(__dirname, '../public'))
