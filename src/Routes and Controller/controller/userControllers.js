@@ -57,7 +57,7 @@ const controllerUsers ={
                                 token: token
                             })
 
-                         res.redirect('https://front-utn.herokuapp.com/home')
+                         
                         } else {
                             res.status(400).json({
                                 msg: 'Contraseña incorrecta'

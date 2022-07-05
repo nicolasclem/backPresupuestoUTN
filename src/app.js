@@ -10,12 +10,7 @@ const session = require ('express-session');
 const  userLoggedMiddleware =require('../src/middleware/userLoggedMiddleware')
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 
-//requerimos las rutas
-const userRoute = require('./Routes and Controller/routers/userRouter')
-const operationRoute = require('./Routes and Controller/routers/operationRouter');
 
-// testeo de data tabla types
-const typeRoute = require('./Routes and Controller/routers/typeRouter');
 
 const config = {
     application: {
@@ -29,6 +24,13 @@ const config = {
         }
 }
 };
+
+res.setHeader('Access-Control-Allow-Origin', '*');
+res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+res.setHeader('Access-Control-Allow-Credentials', true);
+
+app.use(cors())
 // app.use(cors({
 //     origin: '*'
 //     }));
@@ -41,9 +43,19 @@ const config = {
 //       origin: true,
 //     })
 //   )
-app.use(cors(
-     config.application.cors.server
-  ));// politica de seguirdad
+// app.use(cors(
+//      config.application.cors.server
+//   ));// politica de seguirdad
+
+
+
+
+  //requerimos las rutas
+const userRoute = require('./Routes and Controller/routers/userRouter')
+const operationRoute = require('./Routes and Controller/routers/operationRouter');
+
+// testeo de data tabla types
+const typeRoute = require('./Routes and Controller/routers/typeRouter');
 
 app.use(
     express.static(path.resolve(__dirname, '../public'))
