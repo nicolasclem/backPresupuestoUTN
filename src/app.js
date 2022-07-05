@@ -29,18 +29,18 @@ const config = {
         }
 }
 };
-// app.use(cors({
-//     origin: '*'
-//     }));
+app.use(cors({
+    origin: '*'
+    }));
 
-app.use(
-    cors({
-      origin: "*",
-      methods: ["GET", "POST", "DELETE","PUT"],
-      credentials: true,
-      origin: true,
-    })
-  )
+// app.use(
+//     cors({
+//       origin: "*",
+//       methods: ["GET", "POST", "DELETE","PUT"],
+//       credentials: true,
+//       origin: true,
+//     })
+//   )
 // app.use(cors(
 //      config.application.cors.server
 //   ));// politica de seguirdad
