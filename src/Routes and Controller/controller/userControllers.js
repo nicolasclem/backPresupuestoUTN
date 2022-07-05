@@ -56,8 +56,8 @@ const controllerUsers ={
                                 time: `su token expira en  ${expireToken/60} min`,
                                 token: token
                             })
-                    
-                        
+
+                         res.redirect('https://front-utn.herokuapp.com/home')
                         } else {
                             res.status(400).json({
                                 msg: 'Contraseña incorrecta'

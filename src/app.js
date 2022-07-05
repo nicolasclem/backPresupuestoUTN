@@ -22,7 +22,7 @@ const config = {
         cors: {
             server: [
                 {
-                    Origin:'https://front-utn.herokuapp.com/*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                    Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
                     credentials: true
                 }
             ]
