@@ -29,6 +29,9 @@ const config = {
         }
 }
 };
+// app.use(cors({
+//     origin: '*'
+//     }));
 
 app.use(
     cors({

@@ -47,7 +47,7 @@ const operations ={
                     amount: req.body.amount,
                     date:req.body.date,
                     id_type:req.body.type,
-                    id_user:114// hardcodeado hasta implementar  registro desde cliente ... realizar  registro desde http://localhost:3003/
+                    id_user:req.session.userLogged.id||114// hardcodeado hasta implementar  registro desde cliente ... realizar  registro desde http://localhost:3003/
                     
             
                     

@@ -56,7 +56,7 @@ const controllerUsers ={
                                 time: `su token expira en  ${expireToken/60} min`,
                                 token: token
                             })
-                        return res.redirect('/home');
+                    
                         
                         } else {
                             res.status(400).json({
