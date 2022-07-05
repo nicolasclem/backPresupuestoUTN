@@ -22,16 +22,16 @@ const config = {
         cors: {
             server: [
                 {
-                    origin: "https://front-utn.herokuapp.com/", //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                    Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
                     credentials: true
                 }
             ]
         }
 }
 };
-app.use(cors())
-//     config.application.cors.server
-//   ));// politica de seguirdad
+app.use(cors(
+     config.application.cors.server
+  ));// politica de seguirdad
 
 app.use(
     express.static(path.resolve(__dirname, '../public'))
