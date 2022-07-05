@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const db = require('../../database/models');
 const bcrypt =require ('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -40,27 +40,24 @@ const controllerUsers ={
 
                         req.session.userLogged = user
 
-
-                            // const expireToken = 420;
-                            // const token = jwt.sign({
-                            //     data: email
-                            // }, process.env.JWT_SECRET, {
-                            //     expiresIn: expireToken
-                            // })
+                        
+                            const expireToken = 420;
+                            const token = jwt.sign({
+                                date: email
+                            }, process.env.JWT_SECRET, {
+                                expiresIn: expireToken
+                            })
                             if(req.body.remember){
                             
                                 res.cookie('userEmail',req.session.userLogged.email,{maxAge:1000*500})
                             }
-                        res.status(200).json({
-                            msg: `bienvenido usuario ${user.name}`
-
-                        })
+                            res.status(200).json({
+                                msg: `bienvenido usuario: ${user.name}`,
+                                time: `su token expira en  ${expireToken/60} min`,
+                                token: token
+                            })
                         return res.redirect('/home');
-                            //  res.status(200).json({
-                            //     msg: `bienvenido usuario: ${user.name}`,
-                            //     time: `su token expira en  ${expireToken/60} min`,
-                            //     token: token
-                            // })
+                        
                         } else {
                             res.status(400).json({
                                 msg: 'Contraseña incorrecta'
