@@ -32,7 +32,7 @@ const config = {
 
 app.use(
     cors({
-      origin: ["https://front-utn.herokuapp.com/"],
+      origin: "*",
       methods: ["GET", "POST", "DELETE","PUT"],
       credentials: true,
       origin: true,
