@@ -1,9 +1,9 @@
 const express=require('express')
 const app=express()
+const cors= require('cors');
 
 const port=  process.env.PORT || 3003
 const path = require('path');
-const cors= require('cors');
 const cookies = require ('cookie-parser');
 
 const session = require ('express-session');
@@ -22,7 +22,7 @@ const config = {
         cors: {
             server: [
                 {
-                    Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                    Origin:'https://front-utn.herokuapp.com/*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
                     credentials: true
                 }
             ]
