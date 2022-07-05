@@ -49,7 +49,7 @@ const controllerUsers ={
                             })
                             if(req.body.remember){
                             
-                                res.cookie('userEmail',req.session.userLogged.email,{maxAge:1000*500})
+                                res.cookie('userEmail',req.session.userLogged.email,{maxAge:1000*500}).send('cookie login')
                             }
                             res.status(200).json({
                                 msg: `bienvenido usuario: ${user.name}`,
