@@ -22,35 +22,35 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //     next();
 //   });
 
-app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "https://front-utn.herokuapp.com/")
-    res.header(
-      "Access-Control-Allow-Headers",
-      "Origin, X-Requested, Content-Type, Accept Authorization"
-    )
-    if (req.method === "OPTIONS") {
-      res.header(
-        "Access-Control-Allow-Methods",
-        "POST, PUT, PATCH, GET, DELETE"
-      )
-      return res.status(200).json({})
-    }
-    next()
-  })
- app.use(cors())
-// const config = {
-//     application: {
-//         cors: {
-//             server: [
-//                 {
-//                     Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
-//                     credentials: true
-//                 }
-//             ]
-//         }
-// }
-// };
-// const (cors({config.application.cors.server}))
+// app.use((req, res, next) => {
+//     res.header("Access-Control-Allow-Origin", "https://front-utn.herokuapp.com/")
+//     res.header(
+//       "Access-Control-Allow-Headers",
+//       "Origin, X-Requested, Content-Type, Accept Authorization"
+//     )
+//     if (req.method === "OPTIONS") {
+//       res.header(
+//         "Access-Control-Allow-Methods",
+//         "POST, PUT, PATCH, GET, DELETE"
+//       )
+//       return res.status(200).json({})
+//     }
+//     next()
+//   })
+//  app.use(cors())
+const config = {
+    application: {
+        cors: {
+            server: [
+                {
+                    Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
+                    credentials: true
+                }
+            ]
+        }
+}
+};
+app.use(cors(config.application.cors.server))
 // const corsOptions = {
 //     origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
 //             ,"https://presupuesto-utn.herokuapp.com/register"],
