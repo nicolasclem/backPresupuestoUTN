@@ -50,10 +50,9 @@ const config = {
         }
 }
 };
-app.use( cors({ credentials: true, origin: ["https://front-utn.herokuapp.com"] }) );
+app.use( cors({ credentials: true, origin: "*" }) );
 // const corsOptions = {
-//     origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
-//             ,"https://presupuesto-utn.herokuapp.com/register"],
+//     origin: ["https://presupuesto-utn.herokuapp.com/"],
 //     preflightContinue:false,
 //     credentials: true
 //   }
