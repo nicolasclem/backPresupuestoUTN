@@ -23,7 +23,7 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //   });
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Origin", "https://front-utn.herokuapp.com/")
     res.header(
       "Access-Control-Allow-Headers",
       "Origin, X-Requested, Content-Type, Accept Authorization"
@@ -37,7 +37,7 @@ app.use((req, res, next) => {
     }
     next()
   })
-//   app.use(cors())
+ app.use(cors())
 // const config = {
 //     application: {
 //         cors: {
