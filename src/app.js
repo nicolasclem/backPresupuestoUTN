@@ -10,20 +10,33 @@ const session = require ('express-session');
 const  userLoggedMiddleware =require('../src/middleware/userLoggedMiddleware')
 const methodOverride =  require('method-override'); // Pasar poder usar los métodos PUT y DELETE
 
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    );
+    next();
+  });
 
 
-const config = {
-    application: {
-        cors: {
-            server: [
-                {
-                    Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
-                    credentials: true
-                }
-            ]
-        }
-}
-};
+  app.use(cors())
+// const config = {
+//     application: {
+//         cors: {
+//             server: [
+//                 {
+//                     Origin:'*', //servidor que deseas que consuma o (*) en caso que sea acceso libre
+//                     credentials: true
+//                 }
+//             ]
+//         }
+// }
+// };
 
 
 // app.use(cors())
@@ -33,15 +46,15 @@ const config = {
 
 // app.use(
 //     cors({
-//       origin: "*",
+//       origin: ["https://front-utn.herokuapp.com/",https://front-utn.herokuapp.com/home","https://front-utn.herokuapp.com/register"],
 //       methods: ["GET", "POST", "DELETE","PUT"],
 //       credentials: true,
 //       origin: true,
 //     })
 //   )
-app.use(cors(
-     config.application.cors.server
-  ));// politica de seguirdad
+// app.use(cors(
+//      config.application.cors.server
+//   ));// politica de seguirdad
 
 
 
