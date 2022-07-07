@@ -1,7 +1,6 @@
 const express=require('express')
 const cors= require('cors');
 const app=express()
-require('dotenv').config()
 const port=  process.env.PORT || 3003
 const path = require('path');
 const cookies = require ('cookie-parser');
@@ -23,7 +22,21 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //     next();
 //   });
 
-
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested, Content-Type, Accept Authorization"
+    )
+    if (req.method === "OPTIONS") {
+      res.header(
+        "Access-Control-Allow-Methods",
+        "POST, PUT, PATCH, GET, DELETE"
+      )
+      return res.status(200).json({})
+    }
+    next()
+  })
 //   app.use(cors())
 // const config = {
 //     application: {
@@ -36,7 +49,8 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //             ]
 //         }
 // }
-//};
+// };
+// const (cors({config.application.cors.server}))
 // const corsOptions = {
 //     origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
 //             ,"https://presupuesto-utn.herokuapp.com/register"],
@@ -45,6 +59,7 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //   }
 
 // app.use(cors())
+
 // app.use(cors({
 //     origin: '*'
 //     }));
@@ -55,12 +70,11 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //       methods: ["GET", "POST", "DELETE","PUT"],
     
 //     })
-//   )
-console.log(process.env.URL_FRONT);
-const corsOptions = {origin: process.env.URL_FRONT || '*', credentials: true};
 
-app.use(cors(corsOptions));
-app.use(cors({ origin: "https://presupuesto-utn.herokuapp.com/", credentials: true }));// politica de seguirdad
+// const corsOptions = {origin: process.env.URL_FRONT || '*', credentials: true};
+
+// app.use(cors(corsOptions));
+//app.use(cors({ origin: "https://presupuesto-utn.herokuapp.com/", credentials: true }));// politica de seguirdad
 
 
 
