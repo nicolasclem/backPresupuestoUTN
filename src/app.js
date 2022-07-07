@@ -36,24 +36,27 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //             ]
 //         }
 // }
-// };
-
+//};
+const corsOptions = {
+    origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
+            ,"https://presupuesto-utn.herokuapp.com/register"],
+    preflightContinue:false,
+    credentials: true
+  }
 
 // app.use(cors())
 // app.use(cors({
 //     origin: '*'
 //     }));
 
-app.use(
-    cors({
-      origin: ["https://front-utn.herokuapp.com/"],
-      methods: ["GET", "POST", "DELETE","PUT"],
+// app.use(
+//     cors({
+//       origin: ["https://front-utn.herokuapp.com/"],
+//       methods: ["GET", "POST", "DELETE","PUT"],
     
-    })
-  )
-// app.use(cors(
-//      config.application.cors.server
-//   ));// politica de seguirdad
+//     })
+//   )
+app.use(cors(corsOptions));// politica de seguirdad
 
 
 
