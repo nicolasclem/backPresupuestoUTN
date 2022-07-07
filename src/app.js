@@ -50,7 +50,7 @@ const config = {
         }
 }
 };
-app.use(cors(config.application.cors.server))
+app.use( cors({ credentials: true, origin: [process.env.FRONTEND_APP_URL] }) );
 // const corsOptions = {
 //     origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
 //             ,"https://presupuesto-utn.herokuapp.com/register"],
