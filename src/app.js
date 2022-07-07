@@ -1,7 +1,7 @@
 const express=require('express')
-const app=express()
 const cors= require('cors');
-
+const app=express()
+require('dotenv').config()
 const port=  process.env.PORT || 3003
 const path = require('path');
 const cookies = require ('cookie-parser');
@@ -37,12 +37,12 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //         }
 // }
 //};
-const corsOptions = {
-    origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
-            ,"https://presupuesto-utn.herokuapp.com/register"],
-    preflightContinue:false,
-    credentials: true
-  }
+// const corsOptions = {
+//     origin: ["https://presupuesto-utn.herokuapp.com/", "https://presupuesto-utn.herokuapp.com/operations/api/:id"
+//             ,"https://presupuesto-utn.herokuapp.com/register"],
+//     preflightContinue:false,
+//     credentials: true
+//   }
 
 // app.use(cors())
 // app.use(cors({
@@ -56,7 +56,11 @@ const corsOptions = {
     
 //     })
 //   )
-app.use(cors(corsOptions));// politica de seguirdad
+console.log(process.env.URL_FRONT);
+const corsOptions = {origin: process.env.URL_FRONT || '*', credentials: true};
+
+app.use(cors(corsOptions));
+app.use(cors({ origin: "https://presupuesto-utn.herokuapp.com/", credentials: true }));// politica de seguirdad
 
 
 
