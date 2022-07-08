@@ -37,7 +37,7 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //     }
 //     next()
 //   })
-//  app.use(cors())
+ app.use(cors())
 const config = {
     application: {
         cors: {
@@ -50,7 +50,7 @@ const config = {
         }
 }
 };
-app.use( cors({ credentials: true, origin: "https://front-utn.herokuapp.com" }) );
+// app.use( cors({ credentials: true, origin: "https://front-utn.herokuapp.com" }) );
 // const corsOptions = {
 //     origin: ["https://presupuesto-utn.herokuapp.com/"],
 //     preflightContinue:false,
