@@ -38,12 +38,11 @@ const controllerUsers = {
                   expiresIn: expireToken,
                 }
               );
-              if (req.body.remember) {
-                res.cookie("userEmail", req.session.userLogged.email, {
-                    maxAge: 1000 * 500,
-                  })
-                  .send("cookie login");
-              }
+            //   if (req.body.remember) {
+            //     res.cookie("userEmail", req.session.userLogged.email, {
+            //         maxAge: 1000 * 500,
+            //       }).send("cookie login");
+            //   }
               return res.status(200).json({
                 msg: `bienvenido usuario: ${user.name}`,
                 time: `su token expira en  ${expireToken / 60} min`,
