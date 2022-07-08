@@ -47,7 +47,7 @@ const controllerUsers = {
                 msg: `bienvenido usuario: ${user.name}`,
                 time: `su token expira en  ${expireToken / 60} min`,
                 token: token,
-              });
+              })
             } else {
               return res.status(400).json({
                 msg: "Contraseña incorrecta",
@@ -66,7 +66,7 @@ const controllerUsers = {
     }
   },
 
-  register: (req, res) => {
+  register:(req, res) => {
     const { name, email, password } = req.body;
     try {
       db.User.findOne({
