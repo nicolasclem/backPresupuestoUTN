@@ -37,7 +37,9 @@ const methodOverride =  require('method-override'); // Pasar poder usar los mét
 //     }
 //     next()
 //   })
- app.use(cors())
+app.use(cors())
+
+
 const config = {
     application: {
         cors: {
