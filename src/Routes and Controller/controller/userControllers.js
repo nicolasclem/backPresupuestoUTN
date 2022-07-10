@@ -67,7 +67,6 @@ const controllerUsers = {
   },
 
 register:async (req, res) => {
-   console.log(req.body);
     try {
         const user = await db.User.findOne({
           where: {
@@ -87,9 +86,7 @@ register:async (req, res) => {
             password: bcrypt.hashSync(req.body.password, 8),
             })
         return res.status(200).json({
-                data: user,
-                msg: `cuenta creada usuario: ${user.name}`,
-                status: 200,
+                msg: `cuenta creada usuario`,
                 });
             }          
         }   catch(error){
