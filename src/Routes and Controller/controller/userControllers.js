@@ -43,11 +43,11 @@ const controllerUsers = {
             //         maxAge: 1000 * 500,
             //       }).send("cookie login");
             //   }
-              return res.status(200).json({
+            return res.status(200).json({
                 msg: `bienvenido usuario: ${user.name}`,
                 time: `su token expira en  ${expireToken / 60} min`,
                 token: token,
-              })
+            })
             } else {
               return res.status(400).json({
                 msg: "Contraseña incorrecta",
@@ -66,41 +66,39 @@ const controllerUsers = {
     }
   },
 
-  register:(req, res) => {
-    const { name, email, password } = req.body;
+register:async (req, res) => {
+   console.log(req.body);
     try {
-      db.User.findOne({
-        where: {
-          email,
-        },
-      })
-        .then((user) => {
-          if (user) {
-            return res.status(400).json({
-              msg: "el mail esta en uso",
-              error: 400,
-            });
-          } else {
-            db.User.create({
-              name,
-              email,
-              password: bcrypt.hashSync(password, 8),
-            })
-              .then((user) => {
-                return res.status(200).json({
-                  data: user,
-                  msg: `cuenta creada usuario: ${user.name}`,
-                  status: 200,
-                });
-              })
-              .catch((error) => console.log(error));
-          }
+        const user = await db.User.findOne({
+          where: {
+            email:req.body.email
+          },
         })
-        .catch((error) => console.log(error));
-    } catch (error) {
-      console.log(error);
-    }
-  },
+        if(user) {
+            return res.status(400).json({
+            msg: "el mail esta en uso",
+            error: 400,
+            });
+
+        } else {
+            db.User.create({
+            name:req.body.name,
+            email:req.body.email,
+            password: bcrypt.hashSync(req.body.password, 8),
+            })
+        return res.status(200).json({
+                data: user,
+                msg: `cuenta creada usuario: ${user.name}`,
+                status: 200,
+                });
+            }          
+        }   catch(error){
+            console.log(error);
+            return res.status(400).json({
+            msg:"algo salio mal"
+            })
+        }
+        },
   // proces de Logout  ----
   logout: (req, res) => {
     res.clearCookie("userEmail");
