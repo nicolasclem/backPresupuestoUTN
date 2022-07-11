@@ -4,16 +4,6 @@ const bcrypt =require ('bcryptjs')
 const jwt = require('jsonwebtoken')
 
 
-
-
-const { validationResult} = require('express-validator');
-
-
-
-
-
-
-
 const controllerUsers = {
   login: async (req, res) => {
     const { email, password } = req.body;
@@ -26,9 +16,9 @@ const controllerUsers = {
         if (user) {
             const passUSer = bcrypt.compareSync(password, user.password);
             if (passUSer) {
-              req.session.userLogged = user;
-
-              const expireToken = 420;
+              
+              
+              const expireToken = 600;
               const token = jwt.sign(
                 {
                   date: email,
@@ -38,13 +28,10 @@ const controllerUsers = {
                   expiresIn: expireToken,
                 }
               );
-            //   if (req.body.remember) {
-            //     res.cookie("userEmail", req.session.userLogged.email, {
-            //         maxAge: 1000 * 500,
-            //       }).send("cookie login");
-            //   }
+              
             return res.status(200).json({
-                msg: `bienvenido usuario: ${user.name}`,
+
+                usuario: user,
                 time: `su token expira en  ${expireToken / 60} min`,
                 token: token,
             })
