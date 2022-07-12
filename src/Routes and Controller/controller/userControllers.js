@@ -28,12 +28,11 @@ const controllerUsers = {
                   expiresIn: expireToken,
                 }
               );
-              
             return res.status(200).json({
-
                 usuario: user,
                 time: `su token expira en  ${expireToken / 60} min`,
-                token: token,
+                token:token
+
             })
             } else {
               return res.status(400).json({
@@ -83,6 +82,13 @@ register:async (req, res) => {
             })
         }
         },
+
+  // check
+  checkToken:(req,res)=>{
+  
+    //metodo para validar el  tokken
+    return res.status(200).json(req.params.token)
+  },
   // proces de Logout  ----
   logout: (req, res) => {
     res.clearCookie("userEmail");

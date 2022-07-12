@@ -31,7 +31,7 @@ app.use(express.urlencoded({extended:false}))
 app.use (session({ 
     secret: 'secreto',
     resave: false,
-    saveUninitialized:false
+    saveUninitialized:true
 }));
 
 

@@ -13,12 +13,11 @@ const controller = require ('../controller/userControllers')
 
 
 //proceso  logout
-    router.get('/logout', controller.logout);
+router.get('/logout', controller.logout);
 
-/****************************************************API */
+router.get('/check/:token', controller.checkToken)
 
 
-router.post('/login',controller.login);
 
 
     module.exports =router;
