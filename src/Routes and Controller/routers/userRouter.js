@@ -12,8 +12,6 @@ const controller = require ('../controller/userControllers')
     router.post('/register',controller.register);
 
 
-//proceso  logout
-router.get('/logout', controller.logout);
 
 router.get('/check/:token', controller.checkToken)
 

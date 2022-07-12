@@ -89,13 +89,7 @@ register:async (req, res) => {
     //metodo para validar el  tokken
     return res.status(200).json(req.params.token)
   },
-  // proces de Logout  ----
-  logout: (req, res) => {
-    res.clearCookie("userEmail");
-    req.session.destroy();
-
-    return res.redirect("/");
-  },
+  
 };
 
 module.exports =controllerUsers

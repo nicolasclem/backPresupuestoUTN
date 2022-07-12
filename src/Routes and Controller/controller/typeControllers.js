@@ -10,7 +10,6 @@ const controllerType ={
         .then(
             type=>{
             return  res.status(200).json({
-                //detial:`http://localhost:3003/types/list`,
                 data:type,
                 status: 200,
                 })
