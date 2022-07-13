@@ -1,16 +1,11 @@
 const db = require("../../database/models");
 
-
 const operations = {
-
-
-
-
   show2: async (req, res) => {
-    await  db.Operation.findAll({
+    await db.Operation.findAll({
       include: [{ association: "types" }, { association: "users" }],
-      where: {id_user: req.params.id}
-    } )
+      where: { id_user: req.params.id },
+    })
       .then((operations) => {
         return res.status(200).json({
           data: operations,
@@ -57,14 +52,13 @@ const operations = {
   },
 
   create: async (req, res) => {
-    
     await db.Operation.create(
       {
         description: req.body.description,
         amount: req.body.amount,
         date: req.body.date,
         id_type: req.body.type,
-        id_user:  req.body.id,
+        id_user: req.body.id,
       },
       {
         include: [

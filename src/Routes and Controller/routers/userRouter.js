@@ -13,7 +13,7 @@ const controller = require ('../controller/userControllers')
 
 
 
-router.get('/check/:token', controller.checkToken)
+    router.get('/check/:token', controller.checkToken)
 
 
 
