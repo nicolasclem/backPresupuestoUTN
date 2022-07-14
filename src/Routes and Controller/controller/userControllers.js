@@ -32,10 +32,10 @@ const controllerUsers = {
             msg: "Welcome!!",
           });
         } else {
-          return res.status(206).json({ msg: "Contraseña incorrecta" });
+          return res.json({ msg: "Contraseña incorrecta" });
         }
       } else {
-        return res.status(200).json({ msg: "usuario no registrado" });
+        return res.json({ msg: "usuario no registrado" });
       }
     } catch (error) {
       console.log(error);
@@ -53,7 +53,7 @@ const controllerUsers = {
         },
       });
       if (user) {
-        return res.status(200).json({
+        return res.json({
           msg: "el mail esta en uso",
         });
       } else {
@@ -67,7 +67,7 @@ const controllerUsers = {
         });
       }
     } catch (error) {
-      console.log(error);
+      
       return res.status(400).json({
         msg: "algo salio mal",
       });
